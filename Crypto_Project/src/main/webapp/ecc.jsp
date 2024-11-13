@@ -1,145 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
-  <title>Cryptop</title>
-
-  <!-- slider stylesheet -->
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECC Encryption and Decryption Tool">
+    <title>HashEncrypt Pro</title>
+    <link rel="stylesheet" href="css/rsa.css">
 </head>
-
 <body>
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              Cryptop
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="about.html"> About </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="how.html"> How </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span>Wallet</span> <img src="images/wallet.png" alt="" />
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Sign Up</a>
-                </li>
-              </ul>
-              <div class="user_option">
-                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                </form>
-              </div>
+    <div id="root">
+        <!-- Main Heading -->
+        <h1 class="main-heading">ECC Encryption and Decryption</h1>
+        
+        <!-- Top Sections: Left (Generate ECC Keys) and Right (RSA Encryption) -->
+        <div class="top-section">
+            <!-- Generate ECC Keys Section (Left) -->
+            <div class="key_gen_section">
+                
+                <div class="key_gen_back">
+                    <h2 class="key_generate_head">Generate ECC Keys</h2>
+                    <label class="select_size" id="key_size" for="key-size">Select ECC Key Size</label>
+                    <select class="select_bar" id="key-size">
+                        <option value="512">512 bits</option>
+                        <option value="1024">1024 bits</option>
+                        <option value="2048">2048 bits</option>
+                        <option value="3072">3072 bits</option>
+                        <option value="4096">4096 bits</option>
+                    </select>
+                    <button class="generate_key">Generate ECC Key Pair</button>
+                    <div class="key_gen_pub_pri">
+                        <div class="inner_key_gen">
+                            <div class="row_copy_gen">
+                                <label class="key_head" for="public-key">Alice's Public Key</label>
+                                <textarea class="key_box box1" id="public-key" readonly="" placeholder="Your public key will appear here"></textarea>
+                                <button class="copy">Copy</button>
+                            </div>
+                            
+                        </div>
+                        <div class="inner_key_gen">
+                            <div class="row_copy_gen">
+                                <label class="key_head" for="private-key">Alice's Private Key</label>
+                                <textarea class="key_box box1" id="private-key" readonly="" placeholder="Your private key will appear here"></textarea>
+                                <button class="copy">Copy</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <!-- about section -->
-
-  <section class="about_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          About Cryptop
-        </h2>
-      </div>
-      <div class="box">
-        <div class="img-box">
-          <img src="images/about-img.png" alt="">
+            
+            <!-- RSA Encryption Section (Right) -->
+            <div class="encrypt_decrypt_section">
+                <h2 class="rsa_en_de_head">RSA Encryption</h2>
+                <label class="select_size label2" for="manual-public-key">Enter Public Key</label>
+                <textarea class="key_box size2" id="manual-public-key" rows="1" cols="50" placeholder="Enter Public Key"></textarea>
+                <label class="select_size label2" for="plain-text">Plain Text</label>
+                <textarea class="key_box size2" id="plain-text" rows="4" cols="50" placeholder="Enter Plain Text..."></textarea>
+                <button class="generate_key second">Encrypt</button>
+            </div>
         </div>
-        <div class="detail-box">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniamLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim
-          </p>
-          <div class="btn-box">
-            <a href="">
-              Read More
-            </a>
-          </div>
+        
+        <!-- Bottom Section: Decryption and Result -->
+        <div class="bottom-section">
+            <!-- RSA Decryption Section -->
+            <div class="rsa_enc_dec_in">
+                <h2 class="rsa_en_de_head">Generate Shared Key</h2>
+                <label class="select_size label2" for="manual-private-key">Enter Sender's Private Key</label>
+                <textarea class="key_box size2" id="manual-private-key" rows="1" cols="50" placeholder="Enter Private Key"></textarea>
+                <label class="select_size label2" for="encrypted-text">Enter Reciever's Public Key</label>
+                <textarea class="key_box size2" id="encrypted-text" rows="4" cols="50" placeholder="Enter Encrypted Text..."></textarea>
+                <button class="generate_key second">Generate</button>
+            </div>
+            
+            <!-- Result Section -->
+            <div class="rsa_enc_dec_in">
+                <h2 class="rsa_en_de_head">Shared Key</h2>
+                <textarea class="result_output" id="result" readonly placeholder="The result will appear here"></textarea>
+                <button class="result_but">Copy Result</button>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!-- end about section -->
+    
 
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- owl carousel script 
-    -->
-  <script type="text/javascript">
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      navText: [],
-      center: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        1000: {
-          items: 3
-        }
-      }
-    });
-  </script>
-  <!-- end owl carousel script -->
 </body>
-
 </html>
