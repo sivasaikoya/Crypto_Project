@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class homeController {
 	
 	@RequestMapping("/")
-	public String home() {
-		return "index";
+	public String index() {
+		return "index.jsp";
 	}
-	
+	@RequestMapping("/home")
+	public String home() {
+		return "home.html";
+	}
 
 	@RequestMapping("/test")
 	@ResponseBody
