@@ -29,14 +29,14 @@ public class ECC {
 	
 	
 
-	public ECC() throws Exception {
+	public ECC() {
 		super();
-		aliceKeyPair = generateECCKeyPair(); 
-		bobKeyPair = generateECCKeyPair();
-		//shared_key=Base64.getEncoder().encodeToString(deriveSharedSecret(aliceKeyPair.getPrivate(),bobKeyPair.getPublic()));
 	}
 
-	
+	public void generate() throws Exception {
+		aliceKeyPair = generateECCKeyPair(); 
+		bobKeyPair = generateECCKeyPair();
+	}
 	public String getAlice_private() {
 		return Base64.getEncoder().encodeToString(aliceKeyPair.getPrivate().getEncoded());
 	}

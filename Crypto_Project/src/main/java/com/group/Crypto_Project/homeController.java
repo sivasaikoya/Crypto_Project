@@ -74,7 +74,8 @@ public class homeController {
 	}
 	
 	@RequestMapping("ecc")
-	public String ecc(ECC ecc,ModelMap m) {
+	public String ecc(ECC ecc,ModelMap m) throws Exception {
+		ecc.generate();
 		apub=ecc.getAlice_public();
 		apvt=ecc.getAlice_private();
 		bpub=ecc.getBob_public();
@@ -97,6 +98,26 @@ public class homeController {
 		m.addAttribute("sharedkey", sharedkey);
 		return "ecc";
 	}
+	
+	@RequestMapping("aes_encrypt")
+	public String aes_en(@RequestParam("pt") String pt,@RequestParam("key") String sharedkey,ECC ecc,ModelMap m) throws Exception {
+		Ct=ecc.encryptMessage(pt, sharedkey);
+		m.addAttribute("plain", pt);
+		m.addAttribute("sharedkey", sharedkey);
+		m.addAttribute("ct", Ct);
+		return "aes";
+	}
+	
+	@RequestMapping("aes_decrypt")
+	public String aes_de(@RequestParam("ct") String ct,@RequestParam("key") String sharedkey,ECC ecc,ModelMap m) throws Exception {
+		Pt=ecc.decryptMessage(ct, sharedkey);
+		m.addAttribute("cipher", ct);
+		m.addAttribute("sharedkey", sharedkey);
+		m.addAttribute("pt", Pt);
+		return "aes";
+	}
+	
+	
 	
 	@RequestMapping("test")
 	@ResponseBody
