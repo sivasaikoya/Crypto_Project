@@ -1,5 +1,8 @@
 package com.group.Crypto_Project;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,11 +40,7 @@ public class homeController {
 		m.addAttribute("str", "Sivasai");
 		return "res";
 	}
-	@RequestMapping("test")
-	@ResponseBody
-	public String test() {
-		return "hello this is test";
-	}
+	
 	
 	@RequestMapping("rsa")
 	public void rsa(@RequestParam("bits") int bits,ModelMap m) throws Exception {
@@ -98,4 +97,15 @@ public class homeController {
 		m.addAttribute("sharedkey", sharedkey);
 		return "ecc";
 	}
+	
+	@RequestMapping("test")
+	@ResponseBody
+	public Map<String, String> test() {
+		HashMap<String, String> obj=new HashMap<>();
+		obj.put("name","siva");
+		obj.put("class","5th sem");
+		
+		return obj;
+	}
+	
 }
