@@ -34,11 +34,9 @@ public class homeController {
 	public String index() {
 		return "index";
 	}
-	
-	@RequestMapping("res")
-	public String res(ModelMap m) {
-		m.addAttribute("str", "Sivasai");
-		return "res";
+	@RequestMapping("/t")
+	public String t() {
+		return "test";
 	}
 	
 	
