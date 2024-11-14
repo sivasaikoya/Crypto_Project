@@ -14,6 +14,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 @Component
@@ -31,7 +33,7 @@ public class ECC {
 		super();
 		aliceKeyPair = generateECCKeyPair(); 
 		bobKeyPair = generateECCKeyPair();
-		shared_key=Base64.getEncoder().encodeToString(deriveSharedSecret(aliceKeyPair.getPrivate(),bobKeyPair.getPublic()));
+		//shared_key=Base64.getEncoder().encodeToString(deriveSharedSecret(aliceKeyPair.getPrivate(),bobKeyPair.getPublic()));
 	}
 
 	
@@ -52,7 +54,22 @@ public class ECC {
 	public String getBob_public() {
 		return Base64.getEncoder().encodeToString(bobKeyPair.getPublic().getEncoded());
 	}
-	
+	public void setShared_key(String pvt,String pub) throws Exception {
+		byte[] publicBytes = Base64.getDecoder().decode(pub);
+	    byte[] privateBytes = Base64.getDecoder().decode(pvt);
+
+	    // Generate PublicKey from publicBytes
+	    KeyFactory keyFactory = KeyFactory.getInstance("EC", "BC");
+	    X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(publicBytes);
+	    PublicKey publicKey = keyFactory.generatePublic(pubKeySpec);
+
+	    // Generate PrivateKey from privateBytes
+	    PKCS8EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(privateBytes);
+	    PrivateKey privateKey = keyFactory.generatePrivate(privKeySpec);
+
+	    // Derive the shared secret using the reconstructed keys
+	    shared_key = Base64.getEncoder().encodeToString(deriveSharedSecret(privateKey, publicKey));
+	}
 	public String getShared_key() {
 		return shared_key;
 	}

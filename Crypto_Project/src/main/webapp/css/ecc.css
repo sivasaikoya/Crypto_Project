@@ -1,0 +1,173 @@
+/* Reset default browser styles */
+body, h1, h2, p, select, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.key_generate_head{
+    color: #30ae69;
+}
+/* Page background and root container */
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#root {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Main heading */
+.main-heading {
+    color: #30ae69;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Top section: Flexbox for two columns */
+.top-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Key Generation Section (Left) */
+.key_gen_section {
+    flex: 1;
+    background-color: #eef3f8;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #d0dfe8;
+}
+
+/* Encryption Section (Right) */
+.encrypt_decrypt_section {
+    flex: 1;
+    background-color: #eef3f8;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #d0dfe8;
+}
+
+/* Bottom section: Full-width */
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Heading and labels */
+h2.rsa_en_de_head {
+    color: #30ae69;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Labels and select dropdown */
+label.select_size {
+    margin-top: 10px;
+    font-weight: 500;
+    color: #5d6d7e;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Textarea and button styling */
+textarea.key_box, .result_output {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d0dfe8;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+textarea.key_box {
+    min-height: 140px;
+}
+.generate_key{
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+select.select_bar {
+    height: 45px;
+    margin-right: 40px;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    width: 15%;
+    border-color: #30ae69;
+    margin-left: 1%;
+}
+
+/* Button styling */
+button.copy{
+    margin-left: 80%;
+}
+button.generate_key, button.result_but, button.copy {
+    background-color: #30ae69;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button.generate_key:hover, button.result_but:hover, button.copy:hover {
+    background-color: #278f57;
+}
+
+/* Specific styling for result output */
+.result_output {
+    background-color: #f2f5f7;
+    color: #2c3e50;
+    padding: 12px;
+    min-height: 100px;
+    margin-top: 15px;
+}
+
+/* Decryption and Result sections */
+.rsa_enc_dec_in {
+    margin-bottom: 30px;
+}
+
+/* SVG icon for the back button */
+.go_back_rsa {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.go_back_rsa svg {
+    cursor: pointer;
+    fill: #30ae69;
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s;
+}
+
+.go_back_rsa svg:hover {
+    fill: #278f57;
+}
