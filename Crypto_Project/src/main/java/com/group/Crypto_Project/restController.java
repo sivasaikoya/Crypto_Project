@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import com.group.Algos.ECC;
 import com.group.Algos.RSA;
 
 @RestController
+@CrossOrigin
 public class restController {
 	
 	RSA rsa=new RSA();
@@ -105,6 +107,15 @@ public class restController {
 		obj.put("cipher", ct);
 		obj.put("sharedkey", sharedkey);
 		obj.put("pt", Pt);
+		return obj;
+	}
+	
+	@RequestMapping("test")
+	public Map<String, String> test() {
+		HashMap<String, String> obj=new HashMap<>();
+		obj.put("name","siva");
+		obj.put("class","5th sem");
+		
 		return obj;
 	}
 }
