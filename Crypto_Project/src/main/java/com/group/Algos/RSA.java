@@ -65,6 +65,7 @@ public class RSA{
 
     // Method to encrypt data with a public key
     public static String encrypt(String data, String key) throws Exception {
+    	key=key.replaceAll("\\s","+");
     	byte[] keyBytes = Base64.getDecoder().decode(key);
         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(RSA);
@@ -76,7 +77,11 @@ public class RSA{
     }
 
     // Method to decrypt data with a private key
-    public static String decrypt(String encryptedData, String key) throws Exception {
+    public String decrypt(String encryptedData, String key) throws Exception {
+    	key=key.replaceAll("\\s","+");
+    	//System.out.println(key);
+    	encryptedData=encryptedData.replaceAll("\\s","+");
+    	//System.out.println(encryptedData);
     	byte[] keyBytes = Base64.getDecoder().decode(key);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(RSA);

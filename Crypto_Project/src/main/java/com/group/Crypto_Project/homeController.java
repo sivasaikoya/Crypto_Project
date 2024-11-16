@@ -62,8 +62,8 @@ public class homeController {
 	}
 	
 	@RequestMapping("decrypt")
-	public String decrypt(@RequestParam("pvt") String key,@RequestParam("ct") String ct,ModelMap m) throws Exception {
-		Pt=rsa.decrypt(ct, key);
+	public String decrypt(@RequestParam("pvt") String pvt,@RequestParam("ct") String ct,ModelMap m) throws Exception {
+		Pt=rsa.decrypt(ct, pvt);
 		m.addAttribute("cipher", ct);
 		m.addAttribute("pvt", Private);
 		m.addAttribute("pub", Public);

@@ -38,12 +38,13 @@ public class restController {
 		obj.put("pvt",Private);
 		obj.put("pub", Public);
 		return obj;
+		
 	}
 	
 	@RequestMapping("rsa_encrypt")
 	public Map<String, String> encrypt(@RequestParam("pub") String pub,@RequestParam("pt") String pt) throws Exception {
 		Ct=rsa.encrypt(pt, pub);
-		HashMap<String, String> obj=new HashMap<>();
+		HashMap<String, String> obj=new HashMap<>();		
 		obj.put("plain",pt);
 		obj.put("pvt",Private);
 		obj.put("pub",pub);
@@ -53,6 +54,8 @@ public class restController {
 	
 	@RequestMapping("rsa_decrypt")
 	public Map<String, String> decrypt(@RequestParam("pvt") String pvt,@RequestParam("ct") String ct) throws Exception {
+		System.out.println(pvt);
+		System.out.println(ct);
 		Pt=rsa.decrypt(ct, pvt);
 		HashMap<String, String> obj=new HashMap<>();
 		obj.put("cipher",ct);

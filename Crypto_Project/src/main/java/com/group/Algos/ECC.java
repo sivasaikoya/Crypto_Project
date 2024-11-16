@@ -55,6 +55,10 @@ public class ECC {
 		return Base64.getEncoder().encodeToString(bobKeyPair.getPublic().getEncoded());
 	}
 	public void setShared_key(String pvt,String pub) throws Exception {
+		pvt=pvt.replaceAll("\\s","+");
+		pub=pub.replaceAll("\\s","+");
+		System.out.println(pvt);
+		System.out.println(pub);
 		byte[] publicBytes = Base64.getDecoder().decode(pub);
 	    byte[] privateBytes = Base64.getDecoder().decode(pvt);
 
@@ -91,6 +95,8 @@ public class ECC {
 
 	    // Encrypt a message using AES with the derived shared secret
 	    public String encryptMessage(String plainText, String key) throws Exception {
+	    	//plainText=plainText.replaceAll("\\s","+");
+			key=key.replaceAll("\\s","+");
 	    	byte[] sharedSecret=Base64.getDecoder().decode(key);
 	        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "BC");
 	        SecretKeySpec aesKey = new SecretKeySpec(sharedSecret, 0, 16, "AES"); // Use first 16 bytes for AES key
@@ -100,6 +106,8 @@ public class ECC {
 
 	    // Decrypt the message using AES with the derived shared secret
 	    public String decryptMessage(String ct, String key) throws Exception {
+	    	ct=ct.replaceAll("\\s","+");
+			key=key.replaceAll("\\s","+");
 	    	byte[] encryptedText=Base64.getDecoder().decode(ct);
 	    	byte[] sharedSecret=Base64.getDecoder().decode(key);
 	        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "BC");
